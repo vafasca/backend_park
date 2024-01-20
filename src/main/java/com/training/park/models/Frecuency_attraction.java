@@ -22,4 +22,8 @@ public class Frecuency_attraction implements Serializable {
     private Long id;
     @Column(name = "entryDate")
     private LocalDate entryDate;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "fk_attraction")
+    private Attraction attraction;
 }

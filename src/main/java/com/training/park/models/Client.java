@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -24,11 +26,19 @@ public class Client implements Serializable {
     @Column(name = "ci", length = 50)
     private String ci;
     @Column(name = "phone",length = 50)
-    private int phone;
+    private String phone;
     @Column(name = "email",length = 50)
     private String email;
     @Column(name = "height",length = 50)
     private Double height;
     @Column(name = "age",length = 50)
     private int age;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "client_id")
+    private List<Ticket> tickets = new ArrayList<Ticket>();
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "fk_promotion")
+    private Promotion promotion;
 }

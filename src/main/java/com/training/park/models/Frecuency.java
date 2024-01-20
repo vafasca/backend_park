@@ -22,4 +22,8 @@ public class Frecuency implements Serializable {
     private Long id;
     @Column(name = "entryDate")
     private LocalDate entryDate;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "fk_ticket")
+    private Frecuency frecuency;
 }
