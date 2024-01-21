@@ -1,5 +1,7 @@
 package com.training.park.controllers;
 
+
+
 import com.training.park.models.Client;
 import com.training.park.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/v1/clients")
 public class ClientController {
 
-    @Autowired
     private ClientService clientService;
+
+    public ClientController(ClientService clientService){
+        this.clientService = clientService;
+    }
 
     @GetMapping("")
     public ResponseEntity<?> getAll(){
