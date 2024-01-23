@@ -29,12 +29,14 @@ public class Employee implements Serializable {
     private String schedule;
     @Column(name = "email")
     private String email;
+    @Column(name = "password")
+    private  String password;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_id")
     private List<Ticket> tickets = new ArrayList<Ticket>();
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "fk_rol")
     private Rol rol;
 
