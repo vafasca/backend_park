@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +43,9 @@ public class TicketService implements BaseService<Ticket> {
     @Transactional
     public Ticket save(Ticket entity) throws Exception {
         try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            String formattedDate = dateFormat.format(new Date());
+            entity.setDate(dateFormat.parse(formattedDate));
             entity = ticketRepository.save(entity);
             return entity;
         }catch (Exception e){
