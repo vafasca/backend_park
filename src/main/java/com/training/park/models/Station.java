@@ -21,4 +21,6 @@ public class Station implements Serializable {
     private Long id;
     @Column(name = "status")
     private Boolean status;
+    @Column(name = "name")
+    private String name;
 }

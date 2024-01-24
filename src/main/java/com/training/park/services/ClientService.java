@@ -54,7 +54,8 @@ public class ClientService implements BaseService<Client>{
         try{
             Optional<Client> entityOptional = clientRepository.findById(id);
             Client client = entityOptional.get();
-            client = clientRepository.save(client);
+            entity.setId(id);
+            client = clientRepository.save(entity);
             return client;
         }catch (Exception e){
             throw new Exception(e.getMessage());

@@ -34,11 +34,10 @@ public class Client implements Serializable {
     @Column(name = "age",length = 50)
     private int age;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "client_id")
-    private List<Ticket> tickets = new ArrayList<Ticket>();
 
-    @ManyToOne(optional = true)
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "fk_promotion")
     private Promotion promotion;
+
 }

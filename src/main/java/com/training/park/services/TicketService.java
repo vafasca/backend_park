@@ -54,7 +54,7 @@ public class TicketService implements BaseService<Ticket> {
         try {
             Optional<Ticket> entityOptional = ticketRepository.findById(id);
             Ticket ticket = entityOptional.get();
-            ticket = ticketRepository.save(ticket);
+            ticket = ticketRepository.save(entity);
             return ticket;
         }catch (Exception e){
             throw new Exception(e.getMessage());

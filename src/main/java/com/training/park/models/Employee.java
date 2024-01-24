@@ -32,9 +32,7 @@ public class Employee implements Serializable {
     @Column(name = "password")
     private  String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employee_id")
-    private List<Ticket> tickets = new ArrayList<Ticket>();
+
 
     @ManyToOne(optional = true)
     @JoinColumn(name = "fk_rol")
