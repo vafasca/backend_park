@@ -36,8 +36,10 @@ public class Client implements Serializable {
 
 
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.REMOVE, optional = true)
     @JoinColumn(name = "fk_promotion")
     private Promotion promotion;
+
+
 
 }

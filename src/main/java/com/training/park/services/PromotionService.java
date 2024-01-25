@@ -55,7 +55,8 @@ public class PromotionService implements BaseService<Promotion>{
         try{
             Optional<Promotion> entityOptional = promotionRepository.findById(id);
             Promotion promotion = entityOptional.get();
-            promotion = promotionRepository.save(promotion);
+            entity.setId(id);
+            promotion = promotionRepository.save(entity);
             return promotion;
         }catch (Exception e){
             throw new Exception(e.getMessage());

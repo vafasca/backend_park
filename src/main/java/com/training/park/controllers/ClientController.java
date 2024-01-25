@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "api/v1/clients")
 public class ClientController {
@@ -18,12 +20,15 @@ public class ClientController {
         this.clientService = clientService;
     }
 
+
+
     @GetMapping("")
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<?> obtenerClientesOrdenadosPorCantidadDeTickets() {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(clientService.findAll());
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. PLease try later.\"}");
+            List<Client> clientesOrdenados = clientService.obtenerClientesOrdenadosPorCantidadDeTickets();
+            return ResponseEntity.status(HttpStatus.OK).body(clientesOrdenados);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\":\"Error. Please try later.\"}");
         }
     }
 

@@ -26,6 +26,11 @@ public class ClientService implements BaseService<Client>{
         }
     }
 
+    @Transactional
+    public List<Client> obtenerClientesOrdenadosPorCantidadDeTickets() {
+        return clientRepository.findClientsOrderByTicketCountDesc();
+    }
+
     @Override
     @Transactional
     public Client findById(Long id) throws Exception {
