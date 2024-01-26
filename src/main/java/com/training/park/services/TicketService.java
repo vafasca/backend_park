@@ -80,4 +80,8 @@ public class TicketService implements BaseService<Ticket> {
             throw new Exception(e.getMessage());
         }
     }
+
+    public List<Ticket> obtenerTicketsPorCliente(Long clientId) {
+        return ticketRepository.findTicketsByClientId(clientId);
+    }
 }
