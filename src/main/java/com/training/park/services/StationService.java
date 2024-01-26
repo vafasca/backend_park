@@ -75,4 +75,9 @@ public class StationService implements BaseService<Station>{
             throw new Exception(e.getMessage());
         }
     }
+
+    @Transactional
+    public List<Station> getStationsWithAttractions() {
+        return stationRepository.findAllWithAttractions();
+    }
 }
